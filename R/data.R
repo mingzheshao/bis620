@@ -8,3 +8,13 @@
 #' @rdname pm_ae
 #' @references NCT00339183
 NULL
+
+
+#' @title A Longitudinal AE Data Set
+#'
+#' @description All datasets provided by the study
+#' @name dl
+#' @docType data
+#' @rdname dl
+#' @references NCT00119316
+NULL
