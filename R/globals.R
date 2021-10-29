@@ -3,5 +3,7 @@ utils::globalVariables(c(
   "rsresp_num",
   "AESTDYI",
   "AESOC",
-  "aesev_num"
+  "aesev_num",
+  "STUDYWEEK",
+  "value"
 ))

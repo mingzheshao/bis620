@@ -16,7 +16,7 @@ test_that("The get_baseline function works." , {
 # })
 
 
-# test_that("The get_worst_ae function works." , {
-#   expect_equal(as.character(get_worst_ae(ar$aes[[2]])), "Severe")
-#   expect_equal(as.character(get_worst_ae(ar$aes[[116]])), "Moderate")
-# })
+test_that("The get_worst_ae function works." , {
+  expect_equal(get_worst_ae(ar$aes[[2]]), factor("Severe",levels = c("Mild", "Moderate", "Severe","Life threatening", "Fatal")))
+  expect_equal(get_worst_ae(ar$aes[[116]]), factor("Moderate",levels = c("Mild", "Moderate", "Severe","Life threatening", "Fatal")))
+})
