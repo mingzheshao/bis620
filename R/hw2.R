@@ -1,3 +1,27 @@
+library(haven)
+library(dplyr)
+library(tibble)
+library(purrr)
+library(tidyr)
+library(forcats)
+library(ggplot2)
+
+#' @title fibs
+#'
+#' @description This function gets Fibonacci sequence
+#' @param x a number
+#' @return 1,1,2,3,5,8,13...
+#' @export
+fibs <- function(n){
+  if(n==1 | n==2){
+    return(1)
+  }
+  else{
+    return(fibs(n-1)+fibs(n-2))
+  }
+}
+
+
 #' @title MEDHXCD_label
 #'
 #' @description This function matches medical history code to specific medical history name
@@ -83,42 +107,6 @@ plot_hgb <- function(x) {
 #' @return "Mild", "Moderate", "Severe", "Life threatening", "Fatal"
 #' @export
 #'
-# data(dl)
-# library(purrr)
-# map(dl, ~ names(.x)[grep("TX", names(.x))])
-#
-# trt <- dl$a_eendpt %>%
-#   select(SUBJID, TX)
-#
-# attributes(dl)
-# attributes(dl$c_keyvar)
-# attributes(dl$c_disp)
-#
-# dl$c_keyvar %>%
-#   as.data.frame() %>%
-#   head()
-#
-# ncol(dl$c_keyvar)
-# table(dl$c_keyvar$SITEID)
-#
-# dl$c_disp %>%
-#   as.data.frame() %>%
-#   head()
-#
-# dl$c_disp[, c("DISRSP", "SUBJID")] %>%
-#   head(50) %>%
-#   as.data.frame()
-# aec <- dl$c_ae %>%
-#   mutate(SEVR =
-#            factor(SEVR,
-#                   levels = c("Mild", "Moderate", "Severe",
-#                              "Life threatening", "Fatal"))) %>%
-#   mutate(sevr_num = as.integer(SEVR)) %>%
-#   select(SUBJID, AGE, SEX, SEVR, AEBCTERM, STUDYDAY, AEDUR, HITERM1, sevr_num) %>%
-#   nest(aes = -c(SUBJID, AGE, SEX)) %>%
-#   mutate(num_ae = map_int(aes, nrow))
-# ar <- full_join(aec, dl$c_disp %>% select(SUBJID,DISRSP))
-
 get_worst_ae <- function(x) {
  na_ret <- factor(NA,
                   levels = c("Mild", "Moderate", "Severe",

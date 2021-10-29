@@ -22,7 +22,7 @@ get_best_resp <- function(x) {
 #' @param x an AE data set for a single patient with AESEV.
 #' @return The worst ae for the patient.
 #' @export
-get_worst_ae <- function(x) {
+get_worst_ae0 <- function(x) {
   na_ret <- factor(NA,
                    levels = c("Mild", "Moderate", "Severe",
                               "Life threatening", "Fatal"))
