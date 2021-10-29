@@ -21,6 +21,3 @@ This function gets the worst adverse event through the whole process
 
 TODO: add this later
 }
-\examples{
-get_worst_ae(ar$aes[[116]])
-}
