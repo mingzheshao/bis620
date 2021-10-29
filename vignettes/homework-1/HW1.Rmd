@@ -331,10 +331,6 @@ trelliscope(
 
 ```
 
-```{r}
-get_baseline(HGBchange[1, ])
-```
-
 #### Then we use treslliscope to exhibit each individual's HGB variation throughout the trial. Most patients have a decreasing trend in HGB.
 
 ## Plot: Line plot: mean change in Hemoglobin from baseline
