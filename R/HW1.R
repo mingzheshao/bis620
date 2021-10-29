@@ -68,6 +68,7 @@ get_baseline <- function(x){
 #' plot_hgb(data.frame(STUDYWEEK=c(1,2,3,4),value=c(3.1,5.2,1.3,8.4))
 #' @export
 #'
+library(ggplot2)
 plot_hgb <- function(x) {
   ggplot(x, aes(x = STUDYWEEK, y = value)) +
     geom_line() +

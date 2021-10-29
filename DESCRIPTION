@@ -19,7 +19,8 @@ Imports:
   tidyr,
   forcats,
   plotly,
-  trelliscopejs
+  trelliscopejs,
+  Rmpfr
 Suggests:
   DT,
   rmarkdown,
