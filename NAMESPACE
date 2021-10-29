@@ -2,8 +2,10 @@
 
 export()
 export(MEDHXCD_label)
+export(fibs)
 export(get_best_resp)
 export(get_worst_ae)
+export(get_worst_ae0)
 export(hello)
 export(plot_ae)
 importFrom(dplyr,"%>%")
