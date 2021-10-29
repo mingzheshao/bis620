@@ -42,13 +42,13 @@ library(purrr)
 library(tidyr)
 library(forcats)
 library(ggplot2)
+data(dl)
 ```
 
 ## Process the data(1)
 
 ```{r}
 # import the data
-data(dl)
 # please change Knit Directory to "Projecr Directory"
 # fns <- dir("data/NCT00119316")
 # fns <- fns[grep("sas7bdat", fns)]

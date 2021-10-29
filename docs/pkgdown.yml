@@ -3,5 +3,6 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   bis620: bis620.html
-last_built: 2021-10-19T20:12Z
+  homework-1/HW1: HW1.html
+last_built: 2021-10-29T03:39Z
 

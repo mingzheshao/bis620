@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot the Number of AE's Longitudinally — plot_ae • bis620</title>
+<title>MEDHXCD_label — MEDHXCD_label • bis620</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Plot the Number of AE's Longitudinally — plot_ae" />
-<meta property="og:description" content="TODO: add this later" />
+<meta property="og:title" content="MEDHXCD_label — MEDHXCD_label" />
+<meta property="og:description" content="This function matches medical history code to specific medical history name" />
 
 
 
@@ -118,31 +118,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot the Number of AE's Longitudinally</h1>
+    <h1>MEDHXCD_label</h1>
     
-    <div class="hidden name"><code>plot_ae.Rd</code></div>
+    <div class="hidden name"><code>MEDHXCD_label.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>TODO: add this later</p>
+    <p>This function matches medical history code to specific medical history name</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plot_ae</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>MEDHXCD_label</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>an AE data set for a single patient with AESTDYI and
-AESOC.</p></td>
+      <td><p>a number, medical history code</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The worst ae for the patient.</p>
+    <p>a disease</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>MEDHXCD_label</span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "Cardiovascular"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
