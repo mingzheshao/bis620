@@ -64,7 +64,6 @@ get_baseline <- function(x){
 #' @description This function plots the relationship between STUDYWEEK and hgbvalue
 #' @param x a tibble with column "STUDYWEEK" and "value"
 #' @return a ggplot object
-#' @examples plot_hgb(...)
 #' @export
 #'
 library(ggplot2)
@@ -82,8 +81,6 @@ plot_hgb <- function(x) {
 #' @description This function gets the worst adverse event through the whole process
 #' @param x a
 #' @return "Mild", "Moderate", "Severe", "Life threatening", "Fatal"
-#' @examples
-#' get_worst_ae(ar$aes[[116]])
 #' @export
 #'
 # data(dl)

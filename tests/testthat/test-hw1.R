@@ -11,9 +11,10 @@ test_that("The get_baseline function works." , {
 })
 
 
-test_that("The plot_hgb function works." , {
-  expect_true(inherits(plot_hgb(data.frame(STUDYWEEK=c(1,2,3,4),value=c(3.1,5.2,1.3,8.4))), "ggplot"))
-})
+# test_that("The plot_hgb function works." , {
+#   expect_true(inherits(plot_hgb(data.frame(STUDYWEEK=c(1,2,3,4),value=c(3.1,5.2,1.3,8.4))), "ggplot"))
+# })
+
 
 # test_that("The get_worst_ae function works." , {
 #   expect_equal(as.character(get_worst_ae(ar$aes[[2]])), "Severe")
