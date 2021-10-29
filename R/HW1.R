@@ -64,8 +64,7 @@ get_baseline <- function(x){
 #' @description This function plots the relationship between STUDYWEEK and hgbvalue
 #' @param x a tibble with column "STUDYWEEK" and "value"
 #' @return a ggplot object
-#' @examples
-#' plot_hgb(data.frame(STUDYWEEK=c(1,2,3,4),value=c(3.1,5.2,1.3,8.4))
+#' @examples plot_hgb(...)
 #' @export
 #'
 library(ggplot2)
