@@ -12,7 +12,14 @@ LazyData: true
 RoxygenNote: 7.1.2
 Imports:
   dplyr,
-  ggplot2
+  ggplot2,
+  haven,
+  tibble,
+  purrr,
+  tidyr,
+  forcats,
+  plotly,
+  trelliscopejs
 Suggests:
   DT,
   rmarkdown,
