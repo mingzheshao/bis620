@@ -87,6 +87,7 @@ plot_hgb <- function(x) {
 #' @export
 #'
 data(dl)
+library(purrr)
 map(dl, ~ names(.x)[grep("TX", names(.x))])
 
 trt <- dl$a_eendpt %>%
