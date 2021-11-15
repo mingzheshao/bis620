@@ -19,7 +19,7 @@ You can install the released version of bis620 from [CRAN](https://CRAN.R-projec
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-# library(bis620)
+library(bis620)
 ## basic example code
 ```
 
