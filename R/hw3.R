@@ -1,3 +1,5 @@
+library(Matrix)
+
 #' @title bis620_sparse_matrix
 #' @description create a sparse matrix class
 #' @rdname sparse-matrix-class
@@ -15,7 +17,6 @@ bis620_sparse_matrix <- setClass(Class = "bis620_sparse_matrix",
 #' @param mat a matrix
 #' @return a dataframe
 #' @rdname mat_to_df
-#' @importFrom methods new
 #' @export
 mat_to_df <- function(mat){
   i <- c()
@@ -55,7 +56,7 @@ bis620_sparse_transpose <- function(a){
 setMethod(f = "t",signature = c(x = "bis620_sparse_matrix"), function(x){bis620_sparse_transpose(x)})
 
 #' @title bis620_sparse_transpose
-#' @param x dgCMatrix 
+#' @param x dgCMatrix
 #' @rdname bis620_sparse_transpose_dgCMatrix
 #' @export
 setMethod(f = "t",signature = c(x = "dgCMatrix"), function(x){bis620_sparse_transpose(x)})
@@ -142,7 +143,7 @@ setMethod(f = '+',signature = c(e1 = "dgCMatrix", e2 = "dgCMatrix"), function(e1
 #' @title bis620_sparse_add_1
 #' @param e1 dgCMatrix
 #' @param e2 bis620_sparse_matrix
-#' 
+#'
 #' @rdname bis620_sparse_add_1
 #' @export
 setMethod(f = '+',signature = c(e1 = "dgCMatrix", e2 = "bis620_sparse_matrix"), function(e1,e2){bis620_sparse_add(e1,e2)})
@@ -620,7 +621,6 @@ setMethod(
       j = x@j,
       x = x@x)
     )
+    invisible(x)
   }
 )
-
-

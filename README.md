@@ -11,7 +11,7 @@ The goal of bis620 is to ...
 You can install the released version of bis620 from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-# install.packages("bis620")
+install.packages("bis620")
 ```
 
 ## Example

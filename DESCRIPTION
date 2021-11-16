@@ -20,7 +20,8 @@ Imports:
   forcats,
   plotly,
   trelliscopejs,
-  Rmpfr
+  Rmpfr,
+  Matrix
 Suggests:
   DT,
   rmarkdown,
