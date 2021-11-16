@@ -9,7 +9,7 @@ library(ggplot2)
 #' @title fibs
 #'
 #' @description This function gets Fibonacci sequence
-#' @param x a number
+#' @param n a number
 #' @return 1,1,2,3,5,8,13...
 #' @export
 fibs <- function(n){
@@ -59,13 +59,12 @@ MEDHXCD_label = function(x){
   }
 }
 
-#' @title get_baseline
-#'
+#' @title get the baseline
+#' @name get_baseline
 #' @description This function gets the baseline
 #' @param x a
 #' @return NA or a number
-#' @examples
-#' get_baseline(tibble(HGBchange_1=NULL,HGBchange_2=0,HGBchange_3=2,HGBchange_4=NULL))
+#' @importFrom dplyr select
 #' @export
 data(dl)
 HGBchange <- dl$a_eendfu %>% select(starts_with("HGB")|TXGROUP)
@@ -83,11 +82,12 @@ get_baseline <- function(x){
   }
 }
 
-#' @title plot_hgb
-#'
+#' @title plot the hgb
+#' @name plot_hgb
 #' @description This function plots the relationship between STUDYWEEK and hgbvalue
 #' @param x a tibble with column "STUDYWEEK" and "value"
 #' @return a ggplot object
+#' @importFrom ggplot2 labs
 #' @export
 #'
 library(ggplot2)

@@ -7,7 +7,7 @@
 fibs(n)
 }
 \arguments{
-\item{x}{a number}
+\item{n}{a number}
 }
 \value{
 1,1,2,3,5,8,13...
