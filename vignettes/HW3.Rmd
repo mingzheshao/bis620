@@ -1,6 +1,6 @@
 # ---
 title: "HW3"
-author: "Michael Kane"
+author: "Mingzhe Shao, Ruihan Qin"
 date: "11/4/2021"
 output: rmarkdown::html_vignette
 vignette: >
@@ -12,6 +12,13 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+### Proposal for Final Project:
+1. 
+2. 
+3. 
+
+
 
 As mentioned in class, a sparse matrix represents a matrix by the non-zero elements. For example, a sparse matrix whose non-zero
 elements having values at 1, 1 and 2, 1 respectively can be represented in R as:
