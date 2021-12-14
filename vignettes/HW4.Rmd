@@ -1,6 +1,6 @@
 ---
 title: "HW 4"
-author: "Mingzhe Shao (ms4282), Ruihan Qin (rq33)"
+author: "Mingzhe Shao, Ruihan Qin (rq33)"
 date: "12/12/2021"
 output: rmarkdown::html_vignette
 vignette: >
@@ -17,11 +17,15 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(reticulate)
 use_condaenv("bis620")
+
 np <- import("numpy", convert = FALSE)
 #library(Matrix)
 setOldClass("numpy.ndarray")
 bis620_numpy_matrix <- setClass(Class = "bis620_numpy_matrix",
                                 representation(nparray= "numpy.ndarray"))
+#         contains = "numpy.ndarray")
+
+
 ```
 
 
@@ -236,9 +240,7 @@ x1 %*% x4
 
 ```
 
-
 ### Proposal for Final Project:
-
 #### 1. Data scouce and background description:
 We propose to design our project based one of Kaggle competition(Mechanisms of Action (MoA) Prediction). It is a challenge hosted by Laboratory for Innovation Science at Harvard with the goal to advance drug development through improvements to MoA prediction algorithms.
 
@@ -257,9 +259,4 @@ The entire dataset features roughly 5000 unique known drugs. Each drug was profi
 #### 2. Data Analysis and Create Package in R:
 Process data and create an exploratory data analysis, using tables, visualizations to motivate a specific hypothesis related to the data. Test the hypothesis and provide an interpretation. 
 Create a package with functions useful for data processing and analyzing. Test the functions and move the package to Github.
-
 #### 3. Building Machine Learning Model in Python:
-Build machine learning models such as PCA, logistic regression model in Python and compare these models to make the best prediction.
-
-
-
