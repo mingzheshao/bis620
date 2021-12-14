@@ -1,0 +1,266 @@
+---
+title: "HW 4"
+author: "Mingzhe Shao (ms4282), Ruihan Qin (rq33)"
+date: "12/12/2021"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{HW 4}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(reticulate)
+use_condaenv("bis620")
+
+np <- import("numpy", convert = FALSE)
+#library(Matrix)
+setOldClass("numpy.ndarray")
+bis620_numpy_matrix <- setClass(Class = "bis620_numpy_matrix",
+                                representation(nparray= "numpy.ndarray"))
+#         contains = "numpy.ndarray")
+
+
+```
+
+
+```{r}
+bis620_numpy_transpose <- function(a){
+  if(class(a)[1] == "bis620_numpy_matrix"){
+     a <- a@nparray
+  }
+  else{
+    a <- r_to_py(as.matrix(a))
+  }
+  result <- np$transpose(a)
+  return(bis620_numpy_matrix(nparray = result))
+}
+
+setMethod(f = "t",signature = c(x = "bis620_numpy_matrix"), function(x){bis620_numpy_transpose(x)})
+setMethod(f = "t",signature = c(x = "dgCMatrix"), function(x){bis620_numpy_transpose(x)})
+setMethod(f = "t",signature = c(x = "dgeMatrix"), function(x){bis620_numpy_transpose(x)})
+setMethod(f = "t",signature = c(x = "matrix"), function(x){bis620_numpy_transpose(x)})
+
+
+bis620_numpy_add <- function(a, b){
+  if(class(a)[1] == "bis620_numpy_matrix"){
+     a <- a@nparray
+  }
+  else{
+    a <- r_to_py(as.matrix(a))
+  }
+  if(class(b)[1] == "bis620_numpy_matrix"){
+     b <- b@nparray
+  }
+  else{
+    b <- r_to_py(as.matrix(b))
+  }
+  result <- np$add(a,b)
+  return(bis620_numpy_matrix(nparray = result))
+  }
+
+setMethod(f = '+',signature = c(e1 = "bis620_numpy_matrix", e2 = "dgeMatrix"), function(e1,e2){bis620_numpy_add(e1,e2)})
+setMethod(f = '+',signature = c(e1 = "bis620_numpy_matrix", e2 = "dgCMatrix"), function(e1,e2){bis620_numpy_add(e1,e2)})
+setMethod(f = '+',signature = c(e1 = "bis620_numpy_matrix", e2 = "bis620_numpy_matrix"), function(e1,e2){bis620_numpy_add(e1,e2)})
+setMethod(f = '+',signature = c(e1 = "bis620_numpy_matrix", e2 = "matrix"), function(e1,e2){bis620_numpy_add(e1,e2)})
+setMethod(f = '+',signature = c(e1 = "dgCMatrix", e2 = "dgeMatrix"), function(e1,e2){bis620_numpy_add(e1,e2)})
+setMethod(f = '+',signature = c(e1 = "dgCMatrix", e2 = "dgCMatrix"), function(e1,e2){bis620_numpy_add(e1,e2)})
+setMethod(f = '+',signature = c(e1 = "dgCMatrix", e2 = "bis620_numpy_matrix"), function(e1,e2){bis620_numpy_add(e1,e2)})
+setMethod(f = '+',signature = c(e1 = "dgCMatrix", e2 = "matrix"), function(e1,e2){bis620_numpy_add(e1,e2)})
+setMethod(f = '+',signature = c(e1 = "dgeMatrix", e2 = "dgeMatrix"), function(e1,e2){bis620_numpy_add(e1,e2)})
+setMethod(f = '+',signature = c(e1 = "dgeMatrix", e2 = "dgCMatrix"), function(e1,e2){bis620_numpy_add(e1,e2)})
+setMethod(f = '+',signature = c(e1 = "dgeMatrix", e2 = "bis620_numpy_matrix"), function(e1,e2){bis620_numpy_add(e1,e2)})
+setMethod(f = '+',signature = c(e1 = "dgeMatrix", e2 = "matrix"), function(e1,e2){bis620_numpy_add(e1,e2)})
+setMethod(f = '+',signature = c(e1 = "matrix", e2 = "dgeMatrix"), function(e1,e2){bis620_numpy_add(e1,e2)})
+setMethod(f = '+',signature = c(e1 = "matrix", e2 = "dgCMatrix"), function(e1,e2){bis620_numpy_add(e1,e2)})
+setMethod(f = '+',signature = c(e1 = "matrix", e2 = "bis620_numpy_matrix"), function(e1,e2){bis620_numpy_add(e1,e2)})
+
+bis620_numpy_multiply <- function(a, b){
+  if(class(a)[1] == "bis620_numpy_matrix"){
+     a <- a@nparray
+  }
+  else{
+    a <- r_to_py(as.matrix(a))
+  }
+  if(class(b)[1] == "bis620_numpy_matrix"){
+     b <- b@nparray
+  }
+  else{
+    b <- r_to_py(as.matrix(b))
+  }
+  result <- np$multiply(a,b)
+  return(bis620_numpy_matrix(nparray = result))
+}
+
+setMethod(f = '*',signature = c(e1 = "bis620_numpy_matrix", e2 = "dgeMatrix"), function(e1,e2){bis620_numpy_multiply(e1,e2)})
+setMethod(f = '*',signature = c(e1 = "bis620_numpy_matrix", e2 = "dgCMatrix"), function(e1,e2){bis620_numpy_multiply(e1,e2)})
+setMethod(f = '*',signature = c(e1 = "bis620_numpy_matrix", e2 = "bis620_numpy_matrix"), function(e1,e2){bis620_numpy_multiply(e1,e2)})
+setMethod(f = '*',signature = c(e1 = "dgCMatrix", e2 = "dgeMatrix"), function(e1,e2){bis620_numpy_multiply(e1,e2)})
+setMethod(f = '*',signature = c(e1 = "dgCMatrix", e2 = "dgCMatrix"), function(e1,e2){bis620_numpy_multiply(e1,e2)})
+setMethod(f = '*',signature = c(e1 = "dgCMatrix", e2 = "bis620_numpy_matrix"), function(e1,e2){bis620_numpy_multiply(e1,e2)})
+setMethod(f = '*',signature = c(e1 = "dgeMatrix", e2 = "dgeMatrix"), function(e1,e2){bis620_numpy_multiply(e1,e2)})
+setMethod(f = '*',signature = c(e1 = "dgeMatrix", e2 = "dgCMatrix"), function(e1,e2){bis620_numpy_multiply(e1,e2)})
+setMethod(f = '*',signature = c(e1 = "dgeMatrix", e2 = "bis620_numpy_matrix"), function(e1,e2){bis620_numpy_multiply(e1,e2)})
+
+bis620_numpy_minus <- function(a, b){
+  if(class(a)[1] == "bis620_numpy_matrix"){
+     a <- a@nparray
+  }
+  else{
+    a <- r_to_py(as.matrix(a))
+  }
+  if(class(b)[1] == "bis620_numpy_matrix"){
+     b <- b@nparray
+  }
+  else{
+    b <- r_to_py(as.matrix(b))
+  }
+  result <- np$minus(a,b)
+  return(bis620_numpy_matrix(nparray = result))
+}
+setMethod(f = '-',signature = c(e1 = "bis620_numpy_matrix", e2 = "dgeMatrix"), function(e1,e2){bis620_numpy_minus(e1,e2)})
+setMethod(f = '-',signature = c(e1 = "bis620_numpy_matrix", e2 = "dgCMatrix"), function(e1,e2){bis620_numpy_minus(e1,e2)})
+setMethod(f = '-',signature = c(e1 = "bis620_numpy_matrix", e2 = "bis620_numpy_matrix"), function(e1,e2){bis620_numpy_minus(e1,e2)})
+setMethod(f = '-',signature = c(e1 = "dgCMatrix", e2 = "dgeMatrix"), function(e1,e2){bis620_numpy_minus(e1,e2)})
+setMethod(f = '-',signature = c(e1 = "dgCMatrix", e2 = "dgCMatrix"), function(e1,e2){bis620_numpy_minus(e1,e2)})
+setMethod(f = '-',signature = c(e1 = "dgCMatrix", e2 = "bis620_numpy_matrix"), function(e1,e2){bis620_numpy_minus(e1,e2)})
+setMethod(f = '-',signature = c(e1 = "dgeMatrix", e2 = "dgeMatrix"), function(e1,e2){bis620_numpy_minus(e1,e2)})
+setMethod(f = '-',signature = c(e1 = "dgeMatrix", e2 = "dgCMatrix"), function(e1,e2){bis620_numpy_minus(e1,e2)})
+setMethod(f = '-',signature = c(e1 = "dgeMatrix", e2 = "bis620_numpy_matrix"), function(e1,e2){bis620_numpy_minus(e1,e2)})
+
+
+bis620_numpy_divide <- function(a, b){
+  if(class(a)[1] == "bis620_numpy_matrix"){
+     a <- a@nparray
+  }
+  else{
+    a <- r_to_py(as.matrix(a))
+  }
+  if(class(b)[1] == "bis620_numpy_matrix"){
+     b <- b@nparray
+  }
+  else{
+    b <- r_to_py(as.matrix(b))
+  }
+  result <- np$divide(a,b)
+  return(bis620_numpy_matrix(nparray = result))
+}
+setMethod(f = '/',signature = c(e1 = "bis620_numpy_matrix", e2 = "dgeMatrix"), function(e1,e2){bis620_numpy_divide(e1,e2)})
+setMethod(f = '/',signature = c(e1 = "bis620_numpy_matrix", e2 = "dgCMatrix"), function(e1,e2){bis620_numpy_divide(e1,e2)})
+setMethod(f = '/',signature = c(e1 = "bis620_numpy_matrix", e2 = "bis620_numpy_matrix"), function(e1,e2){bis620_numpy_divide(e1,e2)})
+setMethod(f = '/',signature = c(e1 = "dgCMatrix", e2 = "dgeMatrix"), function(e1,e2){bis620_numpy_divide(e1,e2)})
+setMethod(f = '/',signature = c(e1 = "dgCMatrix", e2 = "dgCMatrix"), function(e1,e2){bis620_numpy_divide(e1,e2)})
+setMethod(f = '/',signature = c(e1 = "dgCMatrix", e2 = "bis620_numpy_matrix"), function(e1,e2){bis620_numpy_divide(e1,e2)})
+setMethod(f = '/',signature = c(e1 = "dgeMatrix", e2 = "dgeMatrix"), function(e1,e2){bis620_numpy_divide(e1,e2)})
+setMethod(f = '/',signature = c(e1 = "dgeMatrix", e2 = "dgCMatrix"), function(e1,e2){bis620_numpy_divide(e1,e2)})
+setMethod(f = '/',signature = c(e1 = "dgeMatrix", e2 = "bis620_numpy_matrix"), function(e1,e2){bis620_numpy_divide(e1,e2)})
+
+
+bis620_numpy_matrix_multiply <- function(a, b){
+  if(class(a)[1] == "bis620_numpy_matrix"){
+     a <- a@nparray
+  }
+  else{
+    a <- r_to_py(as.matrix(a))
+  }
+  if(class(b)[1] == "bis620_numpy_matrix"){
+     b <- b@nparray
+  }
+  else{
+    b <- r_to_py(as.matrix(b))
+  }
+  result <- np$matmul(a,b)
+  return(bis620_numpy_matrix(nparray = result))
+}
+
+setMethod(f = '%*%',signature = c(x = "bis620_numpy_matrix", y = "matrix"), function(x,y){bis620_numpy_matrix_multiply(x,y)})
+setMethod(f = '%*%',signature = c(x = "bis620_numpy_matrix", y = "dgeMatrix"), function(x,y){bis620_numpy_matrix_multiply(x,y)})
+setMethod(f = '%*%',signature = c(x = "bis620_numpy_matrix", y = "dgCMatrix"), function(x,y){bis620_numpy_matrix_multiply(x,y)})
+setMethod(f = '%*%',signature = c(x = "bis620_numpy_matrix", y = "bis620_numpy_matrix"), function(x,y){bis620_numpy_matrix_multiply(x,y)})
+setMethod(f = '%*%',signature = c(x = "dgCMatrix", y = "matrix"), function(x,y){bis620_numpy_matrix_multiply(x,y)})
+setMethod(f = '%*%',signature = c(x = "dgCMatrix", y = "dgeMatrix"), function(x,y){bis620_numpy_matrix_multiply(x,y)})
+setMethod(f = '%*%',signature = c(x = "dgCMatrix", y = "dgCMatrix"), function(x,y){bis620_numpy_matrix_multiply(x,y)})
+setMethod(f = '%*%',signature = c(x = "dgCMatrix", y = "bis620_numpy_matrix"), function(x,y){bis620_numpy_matrix_multiply(x,y)})
+setMethod(f = '%*%',signature = c(x = "dgeMatrix", y = "matrix"), function(x,y){bis620_numpy_matrix_multiply(x,y)})
+setMethod(f = '%*%',signature = c(x = "dgeMatrix", y = "dgeMatrix"), function(x,y){bis620_numpy_matrix_multiply(x,y)})
+setMethod(f = '%*%',signature = c(x = "dgeMatrix", y = "dgCMatrix"), function(x,y){bis620_numpy_matrix_multiply(x,y)})
+setMethod(f = '%*%',signature = c(x = "dgeMatrix", y = "bis620_numpy_matrix"), function(x,y){bis620_numpy_matrix_multiply(x,y)})
+# setMethod(f = '%*%',signature = c(x = "matrix", y = "matrix"), function(x,y){bis620_sparse_matrix_multiply(x,y)})
+# setMethod(f = '%*%',signature = c(x = "matrix", y = "dgeMatrix"), function(x,y){bis620_sparse_matrix_multiply(x,y)})
+# setMethod(f = '%*%',signature = c(x = "matrix", y = "dgCMatrix"), function(x,y){bis620_sparse_matrix_multiply(x,y)})
+# setMethod(f = '%*%',signature = c(x = "matrix", y = "bis620_sparse_matrix"), function(x,y){bis620_sparse_matrix_multiply(x,y)})
+
+bis620_numpy_print <- function(x){
+  print(x@nparray)
+}
+setMethod(f = 'print',signature = c(x = "bis620_numpy_matrix"), function(x){bis620_numpy_print(x)})
+
+```
+
+
+
+```{r eval = FALSE}
+# Tests
+x1 <- bis620_numpy_matrix(nparray = np$array(list(rep(1,6),rep(1,6),
+                                             rep(1,6),rep(1,6),
+                                             rep(1,6),rep(1,6))))
+
+set.seed(1)
+
+x2 <- matrix(rnorm(36), ncol = 6)
+
+library(Matrix)
+
+set.seed(1)
+
+x3 <- Matrix(rnorm(36), ncol = 6)
+
+x4 <- sparseMatrix(  
+  i = c(1, 1, 3, 6), 
+  j = c(2, 3, 5, 1), 
+  x = c(4.3, 5.6, 7, 10),
+  dims = c(6, 6)
+)
+
+# Test that the following are correct:
+x1 + x1
+t(x1) %*% x1
+x1 %*% x1
+x1 + t(x2)
+x1 %*% x2
+x3 + x1
+x3 %*% x3
+x1 + x4
+x1 %*% x4
+
+```
+
+### Proposal for Final Project:
+#### 1. Data scouce and background description:
+We propose to design our project based one of Kaggle competition(Mechanisms of Action (MoA) Prediction). It is a challenge hosted by Laboratory for Innovation Science at Harvard with the goal to advance drug development through improvements to MoA prediction algorithms.
+
+###### Mechanism of Action (MoA) (definition from the website):
+In the past, scientists developed drugs from natural products or were inspired by traditional remedies. Very common drugs, such as acetaminophen, were put into clinical use decades before the biological mechanisms driving their pharmacological activities were fully understood. Today, with the advent of more powerful technologies, drug discovery has changed from the serendipitous approaches of the past to a more targeted model based on an understanding of the underlying biological mechanism of a disease. In this new framework, scientists seek to identify a protein target associated with a disease and develop a molecule that can modulate that protein target. As a shorthand to describe the biological activity of a given molecule, scientists assign a label referred to as mechanism-of-action or MoA for short. 
+One approach to determing the MoA of a new drug is to treat a sample of human cells with the new drug and then analyze the cellular responses with algorithms that search for similarity to known patterns in large genomic databases, such as libraries of gene expression or cell viability patterns of drugs with known MoAs.
+
+###### Data Explanation:
+####### i) g-: signify gene expression data. Each gene feature represents the expression of one particular gene. (g-0 to g-771, numeric)
+####### ii) c-: signify cell viability data. Each cell feature represents the viability of one particular cell line. (c-0 to c-99 , numeric)
+####### iii) cp_type: indicates samples treated with a compound (trt_cp, 91%) or with a control perturbation (ctl_vehicle, 9%); control perturbations have no MoAs
+####### iv) cp_time: indicates the amount of time elapsed between adding the drug and when the measurement was taken. Shorter duration doesn't necessarily mean good effects, and it will differ depending on the mechanism. (24, 48, 72 hours)
+####### v) cp_dose: indicates treatment dose. Generally a higher dose will have a stronger effect. (D1 means low, 51%; D2 means high, 49%)
+The entire dataset features roughly 5000 unique known drugs. Each drug was profiled multiple times at each timing and dosage level (2*3) so there should be at least 6 entries for each drug.
+
+#### 2. Data Analysis and Create Package in R:
+Process data and create an exploratory data analysis, using tables, visualizations to motivate a specific hypothesis related to the data. Test the hypothesis and provide an interpretation. 
+Create a package with functions useful for data processing and analyzing. Test the functions and move the package to Github.
+#### 3. Building Machine Learning Model in Python:
+Build machine learning models such as PCA, logistic regression model in Python and compare these models to make the best prediction.
+
+
+
