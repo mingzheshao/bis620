@@ -255,6 +255,7 @@ The entire dataset features roughly 5000 unique known drugs. Each drug was profi
 #### 2. Data Analysis and Create Package in R:
 Process data and create an exploratory data analysis, using tables, visualizations to motivate a specific hypothesis related to the data. Test the hypothesis and provide an interpretation. 
 Create a package with functions useful for data processing and analyzing. Test the functions and move the package to Github.
+
 #### 3. Building Machine Learning Model in Python:
 Build machine learning models such as PCA, logistic regression model in Python and compare these models to make the best prediction.
 
