@@ -1,6 +1,6 @@
 # ---
 title: "HW3"
-author: "Michael Kane"
+author: "Mingzhe Shao, Ruihan Qin"
 date: "11/4/2021"
 output: rmarkdown::html_vignette
 vignette: >
@@ -12,6 +12,31 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+### Proposal for Final Project:
+#### 1. Data scouce and background description:
+We propose to design our project based one of Kaggle competition(Mechanisms of Action (MoA) Prediction). It is a challenge hosted by Laboratory for Innovation Science at Harvard with the goal to advance drug development through improvements to MoA prediction algorithms.
+
+###### Mechanism of Action (MoA) (definition from the website):
+In the past, scientists developed drugs from natural products or were inspired by traditional remedies. Very common drugs, such as acetaminophen, were put into clinical use decades before the biological mechanisms driving their pharmacological activities were fully understood. Today, with the advent of more powerful technologies, drug discovery has changed from the serendipitous approaches of the past to a more targeted model based on an understanding of the underlying biological mechanism of a disease. In this new framework, scientists seek to identify a protein target associated with a disease and develop a molecule that can modulate that protein target. As a shorthand to describe the biological activity of a given molecule, scientists assign a label referred to as mechanism-of-action or MoA for short. 
+One approach to determing the MoA of a new drug is to treat a sample of human cells with the new drug and then analyze the cellular responses with algorithms that search for similarity to known patterns in large genomic databases, such as libraries of gene expression or cell viability patterns of drugs with known MoAs.
+
+###### Data Explanation:
+####### i) g-: signify gene expression data. Each gene feature represents the expression of one particular gene. (g-0 to g-771, numeric)
+####### ii) c-: signify cell viability data. Each cell feature represents the viability of one particular cell line. (c-0 to c-99 , numeric)
+####### iii) cp_type: indicates samples treated with a compound (trt_cp, 91%) or with a control perturbation (ctl_vehicle, 9%); control perturbations have no MoAs
+####### iv) cp_time: indicates the amount of time elapsed between adding the drug and when the measurement was taken. Shorter duration doesn't necessarily mean good effects, and it will differ depending on the mechanism. (24, 48, 72 hours)
+####### v) cp_dose: indicates treatment dose. Generally a higher dose will have a stronger effect. (D1 means low, 51%; D2 means high, 49%)
+The entire dataset features roughly 5000 unique known drugs. Each drug was profiled multiple times at each timing and dosage level (2*3) so there should be at least 6 entries for each drug.
+
+#### 2. Data Analysis and Develop Package in R:
+Process data and create an exploratory data analysis, using tables, visualizations to motivate a specific hypothesis related to the data. Test the hypothesis and provide an interpretation. 
+Create a package with functions useful for data processing and analyzing. Test the functions and immigrate the package to Github.
+
+#### 3. Building Machine Learning Model in Python:
+Build machine learning models such as PCA, logistic regression model in Python and compare these models to make the best prediction.
+
+-------------------------------------------- Instruction for HW2 ----------------------------------------------------
 
 As mentioned in class, a sparse matrix represents a matrix by the non-zero elements. For example, a sparse matrix whose non-zero
 elements having values at 1, 1 and 2, 1 respectively can be represented in R as:
