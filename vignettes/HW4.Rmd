@@ -17,15 +17,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(reticulate)
 use_condaenv("bis620")
-
 np <- import("numpy", convert = FALSE)
 #library(Matrix)
 setOldClass("numpy.ndarray")
 bis620_numpy_matrix <- setClass(Class = "bis620_numpy_matrix",
                                 representation(nparray= "numpy.ndarray"))
-#         contains = "numpy.ndarray")
-
-
 ```
 
 
