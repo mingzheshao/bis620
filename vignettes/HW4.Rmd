@@ -11,14 +11,12 @@ vignette: >
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-
 ```
 
 
 ```{r}
 library(reticulate)
 use_condaenv("bis620")
-
 np <- import("numpy", convert = FALSE)
 #library(Matrix)
 setOldClass("numpy.ndarray")
